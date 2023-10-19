@@ -7,7 +7,7 @@ const port = process.env.PORT || 4000;
 // Endpoint para gerar nomes fictícios
 
 app.get('/', (req, res) => {
-    res.send('Nossa api para testes 🥳')
+    res.send('Nossa API de testes está no ar... 🥳')
 })
 
 app.get('/api/nome', (req, res) => {
@@ -41,3 +41,5 @@ app.get('/api/pais', (req, res) => {
 app.listen(port, () => {
     console.log(`Servidor está ouvindo na porta ${port} 🔥`);
 });
+
+module.exports = app
