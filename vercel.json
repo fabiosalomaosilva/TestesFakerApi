@@ -10,7 +10,7 @@
         {
             "src": "/swagger(.*)",
             "dest": "/swagger"
-        }
+        },
         {
             "src": "/(.*)",
             "dest": "src/api.js"
