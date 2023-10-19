@@ -2,9 +2,14 @@ const express = require('express');
 const { faker } = require('@faker-js/faker');
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 
 // Endpoint para gerar nomes fictícios
+
+app.get('/', (req, res) => {
+    res.send('Nossa api para testes 🥳')
+})
+
 app.get('/api/nome', (req, res) => {
     const randomName = faker.person.fullName();
     res.send(randomName);
