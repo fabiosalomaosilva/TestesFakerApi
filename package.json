@@ -4,7 +4,8 @@
   "description": "",
   "main": "api.js",
   "scripts": {
-    "dev": "nodemon src/api.js"
+    "dev": "nodemon src/api.js",
+    "start": "node src/api.js"
   },
   "keywords": [],
   "author": "",
