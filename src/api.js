@@ -5,7 +5,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // Endpoint para gerar nomes fictícios
-app.get('/api/fullname', (req, res) => {
+app.get('/api/nome', (req, res) => {
     const randomName = faker.person.fullName();
     res.send(randomName);
 });
@@ -23,6 +23,15 @@ app.get('/api/number/:value', (req, res) => {
 app.get('/api/datapassada', (req, res) => {
     res.send(faker.date.past());
 });
+
+app.get('/api/cidade', (req, res) => {
+    res.send(faker.location.city());
+});
+
+app.get('/api/pais', (req, res) => {
+    res.send(faker.location.country());
+});
+
 
 app.listen(port, () => {
     console.log(`Servidor está ouvindo na porta ${port} 🔥`);
