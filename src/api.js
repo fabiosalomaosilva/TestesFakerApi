@@ -72,7 +72,7 @@ app.get('/api/email', (req, res) => {
  */
 app.get('/api/number/:value', (req, res) => {
     var body = req.query.value;
-    res.send(faker.number.int(0, value));
+    res.send(getNumber(0, value));
 });
 
 /**
@@ -85,7 +85,10 @@ app.get('/api/number/:value', (req, res) => {
  *         description: Número de CPF fictício gerado com sucesso
  */
 app.get('/api/cpf', (req, res) => {
-    res.send(faker.number.int(12345678111, 99999999999));
+    const min = 12345678111;
+    const max = 99999999999;
+    const cpf = getNumber(min, max);
+    res.status(200).send(cpf.toString());
 });
 
 /**
@@ -98,7 +101,10 @@ app.get('/api/cpf', (req, res) => {
  *         description: Número de CNPJ fictício gerado com sucesso
  */
 app.get('/api/cnpj', (req, res) => {
-    res.send(faker.number.int(11113456781111, 99999999999999));
+    const min = 11113456781111;
+    const max = 99999999999999;
+    const cnpj = getNumber(min, max);
+    res.status(200).send(cnpj.toString());
 });
 
 /**
@@ -111,7 +117,7 @@ app.get('/api/cnpj', (req, res) => {
  *         description: Número de RG fictício gerado com sucesso
  */
 app.get('/api/rg', (req, res) => {
-    res.send(faker.number.int(111111111, 999999999));
+    res.send(getNumber(111111111, 999999999).toString());
 });
 
 /**
@@ -124,7 +130,7 @@ app.get('/api/rg', (req, res) => {
  *         description: Número fictício de tipo de pessoa gerado com sucesso
  */
 app.get('/api/tipopessoa', (req, res) => {
-    res.send(faker.number.int(1, 2));
+    res.send(getNumber(1, 2).toString());
 });
 
 /**
@@ -137,7 +143,7 @@ app.get('/api/tipopessoa', (req, res) => {
  *         description: Número fictício de percentual gerado com sucesso
  */
 app.get('/api/percentual', (req, res) => {
-    res.send(faker.number.int(1, 100));
+    res.send(getNumber(1, 100).toString());
 });
 
 /**
@@ -150,7 +156,7 @@ app.get('/api/percentual', (req, res) => {
  *         description: Valor booleano fictício gerado com sucesso
  */
 app.get('/api/boleano', (req, res) => {
-    res.send(faker.number.int(1, 2) == true ? true : false);
+    res.send(getNumber(1, 2) == true ? true : false);
 });
 
 /**
@@ -163,7 +169,7 @@ app.get('/api/boleano', (req, res) => {
  *         description: Data fictícia no passado gerada com sucesso
  */
 app.get('/api/datapassada', (req, res) => {
-    res.send(faker.date.past());
+    res.send(faker.date.past().toString());
 });
 
 /**
@@ -176,7 +182,7 @@ app.get('/api/datapassada', (req, res) => {
  *         description: Nome de cidade fictício gerado com sucesso
  */
 app.get('/api/cidade', (req, res) => {
-    res.send(faker.location.city());
+    res.send(faker.location.city().toString());
 });
 
 /**
@@ -191,6 +197,11 @@ app.get('/api/cidade', (req, res) => {
 app.get('/api/pais', (req, res) => {
     res.send(faker.location.country());
 });
+
+
+function getNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 
 app.listen(port, () => {
