@@ -8,11 +8,11 @@
     ],
     "routes": [
         {
-            "src": "/swagger",
+            "src": "/swagger(.*)",
             "dest": "src/api.js"
         },
         {
-            "src": "/swagger/swagger.json",
+            "src": "/swagger/swagger(.*)",
             "dest": "src/api.js"
         },
         {
