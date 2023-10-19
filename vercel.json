@@ -10,6 +10,14 @@
         {
             "src": "/(.*)",
             "dest": "src/api.js"
+        },
+        {
+            "src": "/swagger(.*)",
+            "dest": "src/swagger"
+        },
+        {
+            "src": "/swagger/swagger(.*)",
+            "dest": "src/swagger/swagger"
         }
     ]
 }
