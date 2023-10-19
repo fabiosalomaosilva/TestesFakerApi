@@ -9,11 +9,11 @@
     "routes": [
         {
             "src": "/swagger(.*)",
-            "dest": "src/api.js"
+            "dest": "/api/swagger"
         },
         {
-            "src": "/swagger/swagger(.*)",
-            "dest": "src/api.js"
+            "src": "/api/swagger/swagger(.*)",
+            "dest": "/api/swagger"
         },
         {
             "src": "/(.*)",
