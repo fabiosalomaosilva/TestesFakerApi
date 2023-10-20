@@ -3,13 +3,13 @@
     "builds": [
         {
             "src": "src/api.js",
-            "use": "@now/node"
+            "use": "@vercel/node"
         }
     ],
     "routes": [
         {
-            "src": "/swagger(.*)",
-            "dest": "/src/api.js"
+            "src": "/swagger",
+            "dest": "src/api.js"
         },
         {
             "src": "/(.*)",
