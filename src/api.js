@@ -18,9 +18,9 @@ const swaggerOptions = {
             description: 'API para gerar dados fictícios para testes de software<br> <a href="/swagger-json" target="_blank">swagger.json</a>',
             version: '1.0.0',
         },
-        displayRequestAuthorization: false,
     },
     apis: ['./src/routes.js'], // Lista de arquivos contendo definições de rota
+
 };
 const swaggerSpec = swaggerJSDoc(swaggerOptions);
 app.get('/swagger-json', (req, res) => {
