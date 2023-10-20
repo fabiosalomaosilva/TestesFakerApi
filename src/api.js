@@ -1,14 +1,15 @@
-const express = require('express');
-const swaggerJSDoc = require('swagger-jsdoc');
-const swaggerUi = require('swagger-ui-express');
-
-const routes = require('./routes');
+import express from "express";
+import cors from "cors";
+import swaggerUI from "swagger-ui-express";
+import swaggerJsDoc from "swagger-jsdoc";
+import router from "./routes.js";
 
 const app = express();
 const port = process.env.PORT || 4000;
+app.use(cors());
 
 // Endpoint para gerar nomes fictícios
-app.use(routes);
+app.use(router);
 
 const swaggerOptions = {
     swaggerDefinition: {
@@ -19,25 +20,21 @@ const swaggerOptions = {
             version: '1.0.0',
         },
     },
-    apis: ['./src/routes.js'], // Lista de arquivos contendo definições de rota
+    apis: ["src/**/*.js"],
 
 };
-const swaggerSpec = swaggerJSDoc(swaggerOptions);
+const swaggerSpec = swaggerJsDoc(swaggerOptions);
 app.get('/swagger-json', (req, res) => {
     res.setHeader('Content-Type', 'application/json');
     res.send(swaggerSpec);
 });
 
 
-app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-
-
-
-// Usando as rotas importadas
-
+app.use('/swagger',
+    swaggerUI.serve,
+    swaggerUI.setup(swaggerSpec)
+);
 
 app.listen(port, () => {
     console.log(`Servidor está ouvindo na porta ${port} 🔥`);
 });
-
-module.exports = app
